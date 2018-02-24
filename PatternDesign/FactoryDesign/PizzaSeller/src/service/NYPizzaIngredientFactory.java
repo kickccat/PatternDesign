@@ -10,26 +10,27 @@ public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
 
     @Override
     public Sauce createSauce() {
-        return null;
+        return new MarinaraSauce();
     }
 
     @Override
     public Cheese createCheese() {
-        return null;
+        return new ReggianoCheese();
     }
 
     @Override
-    public Veggies createVeggies() {
-        return null;
+    public Veggies[] createVeggies() {
+        Veggies[] veggies = {new Garlic(), new Onion(), new Mushroom(), new RedPepper()};
+        return veggies;
     }
 
     @Override
     public Pepperoni createPepperoni() {
-        return null;
+        return new SlicedPepperoni();
     }
 
     @Override
     public Clams createClams() {
-        return null;
+        return new FreshClams();
     }
 }
