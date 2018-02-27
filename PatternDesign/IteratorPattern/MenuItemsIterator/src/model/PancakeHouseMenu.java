@@ -1,11 +1,9 @@
 package model;
 
-import service.PancakeHouseIterator;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class PancakeHouseMenu {
+public class PancakeHouseMenu implements Menu {
 
     ArrayList<MenuItem> menuItems;
 
@@ -24,6 +22,6 @@ public class PancakeHouseMenu {
     }
 
     public Iterator<MenuItem> createIterator() {
-        return new PancakeHouseIterator(menuItems);
+        return menuItems.iterator();
     }
 }
