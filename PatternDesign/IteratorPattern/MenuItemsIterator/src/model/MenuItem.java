@@ -1,6 +1,10 @@
 package model;
 
-public class MenuItem {
+import service.NullIterator;
+
+import java.util.Iterator;
+
+public class MenuItem extends MenuComponent {
 
     private String name;
     private String description;
@@ -28,5 +32,21 @@ public class MenuItem {
 
     public double getPrice() {
         return price;
+    }
+
+    public void print() {
+        System.out.print(" " + getName());
+        if (isVegetarian()) {
+            System.out.println("(v)");
+        } else {
+            System.out.println();
+        }
+        System.out.print("   --  " + getDescription());
+        System.out.println(", " + getPrice());
+    }
+
+    @Override
+    public Iterator createIterator() {
+        return new NullIterator();
     }
 }

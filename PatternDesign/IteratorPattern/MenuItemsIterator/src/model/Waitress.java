@@ -4,37 +4,28 @@ import java.util.Iterator;
 
 public class Waitress {
 
-    Menu pancakeHouseMenu;
-    Menu dinerMenu;
-    Menu cafeMenu;
+    private MenuComponent allMenus;
 
-    public Waitress(Menu pancakeHouseMenu, Menu dinerMenu, Menu cafeMenu) {
-        this.pancakeHouseMenu = pancakeHouseMenu;
-        this.dinerMenu = dinerMenu;
-        this.cafeMenu = cafeMenu;
+    public Waitress(MenuComponent allMenus) {
+        this.allMenus = allMenus;
     }
 
     public void printMenu() {
-        Iterator pancakeIterator = pancakeHouseMenu.createIterator();
-        Iterator dinerIterator = dinerMenu.createIterator();
-        Iterator cafeIterator = cafeMenu.createIterator();
-
-        System.out.println("MENU\n-------\nBREAKFAST");
-        printMenu(pancakeIterator);
-
-        System.out.println("\nLUNCH");
-        printMenu(dinerIterator);
-
-        System.out.println("\nDINNER");
-        printMenu(cafeIterator);
+        allMenus.print();
     }
 
-    private void printMenu(Iterator iterator) {
+    public void printVegetarianMenu() {
+        Iterator iterator = allMenus.createIterator();
+        System.out.println("\nVegetarian Menu\n-------------");
         while (iterator.hasNext()) {
-            MenuItem menuItem = (MenuItem) iterator.next();
-            System.out.println(menuItem.getName() + ", ");
-            System.out.println(menuItem.getPrice() + " -- ");
-            System.out.println(menuItem.getDescription());
+            MenuComponent component = (MenuComponent) iterator.next();
+            try {
+                if (component.isVegetarian()) {
+                    component.print();
+                }
+            } catch (UnsupportedOperationException e) {
+                //e.printStackTrace();
+            }
 
         }
     }
